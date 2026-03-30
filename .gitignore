@@ -1,0 +1,10 @@
+# Default gitignore for web project
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+dist/
+.env
+.env.local
+*.swp
+*.swo
