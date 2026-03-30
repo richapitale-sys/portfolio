@@ -1,0 +1,13 @@
+# GitHub Pages Configuration
+theme: null
+title: "Richa Pitale | Digital Marketing Manager & Creative Strategist"
+description: "Digital marketing strategist specializing in campaign strategy, graphic design, and creative brand development. Based in Liverpool, UK."
+url: "https://richapitale-sys.github.io"
+baseurl: "/portfolio"
+
+# Build settings
+markdown: kramdown
+exclude:
+  - README.md
+  - .gitignore
+  - "*.sh"
