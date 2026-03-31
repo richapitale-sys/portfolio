@@ -3,50 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Richa Pitale - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Richa Pitale | Digital Marketing Manager & Creative Strategist</title>
+    <meta name="description" content="Digital marketing strategist specializing in campaign strategy, graphic design, and creative brand development. Based in Liverpool, UK.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
+<body itemscope itemtype="http://schema.org/Person">
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">Richa<span>Pitale</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="resume.pdf" class="btn-cv">Download CV</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="container">
+            <p class="tagline">Organized Chaos: Strategy, Design & Storytelling</p>
+            <h1 itemprop="name">Richa Pitale</h1>
+            <h2 itemprop="jobTitle">Digital Marketing Manager | Creative Strategist | Designer</h2>
+            <p class="hero-intro">I create impactful marketing campaigns that blend strategy, design, and storytelling. With a background in media, advertising, and performing arts, I bring creative problem-solving to every brand challenge.</p>
+            <div class="cta-group">
+                <a href="#projects" class="btn-primary">View My Work</a>
+                <a href="#contact" class="btn-outline">Get In Touch</a>
+            </div>
+        </div>
     </header>
-    <section id="hero">
-        <h1 style="background: linear-gradient(to right, #ff7e5f, #feb47b);">Richa Pitale</h1>
-        <p>Location: Liverpool, UK - Open to Work</p>
-        <div class="actions">
-            <button>View My Work</button>
-            <button>Get In Touch</button>
-            <button>Download CV</button>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Professional Journey</h2>
+            <div class="about-grid">
+                <div class="profile-text">
+                    <p>I'm a creative and solution-oriented digital marketing strategist with 8+ years of experience. Currently pursuing <strong>MSc Digital Marketing & Analytics at University of Liverpool</strong> (Expected 2026). <br><small>Work Authorization: UK Student Visa (Graduate Route Eligible).</small></p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>2025 - Present</h3>
+                    <p><strong>MSc Digital Marketing & Analytics</strong> | University of Liverpool</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2024 - 2025</h3>
+                    <p><strong>Social Media Associate</strong> | Sayali Rajadhyaksha Sarees</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2020 - 2025</h3>
+                    <p><strong>Graphic Designer & Strategist</strong> | Mash Hospitality</p>
+                </div>
+            </div>
+
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h4>Campaign Strategy</h4>
+                    <p>Social Media, Rollout & Reporting, Collaboration</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Creative Tools</h4>
+                    <p>Adobe Creative Suite, Google Analytics, Video Editing</p>
+                </div>
+            </div>
         </div>
     </section>
-    <section id="stats">
-        <div class="stat">8+</div>
-        <div class="stat">3</div>
-        <div class="stat">4</div>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-tag">Winner: Poster Competition</div>
+                    <h3>Liverpool ONE: Market Segmentation</h3>
+                    <p>Visual campaign explaining consumer segments and shopping behaviors for the retail district.</p>
+                    <div class="tags"><span>Strategy</span> <span>Design</span></div>
+                </article>
+                <article class="project-card">
+                    <div class="project-tag">Event Marketing</div>
+                    <h3>Bombay Times Fashion Week</h3>
+                    <p>Digital strategy and celebrity content management featuring Mannara Chopra.</p>
+                    <div class="tags"><span>PR</span> <span>Content</span></div>
+                </article>
+                <article class="project-card">
+                    <div class="project-tag">Multi-Brand</div>
+                    <h3>Mash Hospitality Group</h3>
+                    <p>5-year digital growth strategy for Urban Juice Café, Big Little Bombaye, and Casa De Reva.</p>
+                    <div class="tags"><span>Branding</span> <span>Social</span></div>
+                </article>
+            </div>
+        </div>
     </section>
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        <ul>
-            <li>Liverpool ONE</li>
-            <li>Bombay Times</li>
-            <li>Mash Hospitality</li>
-        </ul>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:richa_pitale@yahoo.com">richa_pitale@yahoo.com</a></p>
+                    <p>LinkedIn: <a href="https://www.linkedin.com/in/richa-pitale-b18203397">In/Richa-Pitale</a></p>
+                    <p>Instagram: @ri_gone_rogue</p>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
     </section>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>[Your about section content goes here]</p>
-    </section>
+
     <footer>
-        <p>&copy; 2026 Richa Pitale. All rights reserved.</p>
-        <p>Email: [Your Email]</p>
-        <p>Phone: [Your Phone Number]</p>
+        <p>&copy; 2026 Richa Pitale. All Rights Reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
