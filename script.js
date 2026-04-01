@@ -1,109 +1,168 @@
-// Navigation Hamburger Menu
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
+/* =============================================
+   Richa Pitale Portfolio - Main JavaScript
+   ============================================= */
 
-if (hamburger) {
+// --- Navigation Hamburger Menu ---
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.getElementById('navLinks');
+const navbar    = document.querySelector('.navbar');
+
+if (hamburger && navLinks) {
   hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    const isOpen = navLinks.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
   });
 
-  // Close menu when a link is clicked
-  const links = navLinks.querySelectorAll('a');
-  links.forEach(link => {
+  // Close menu when any link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
     });
   });
 }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
-
-// Update active nav link on scroll
-window.addEventListener('scroll', () => {
-  const navbar = document.getElementById('navbar');
-  if (window.scrollY > 50) {
-    navbar.style.background = 'rgba(15, 15, 15, 0.98)';
-    navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-  } else {
-    navbar.style.background = 'rgba(15, 15, 15, 0.95)';
-    navbar.style.boxShadow = 'none';
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (navLinks && hamburger &&
+      navLinks.classList.contains('active') &&
+      !navLinks.contains(e.target) &&
+      !hamburger.contains(e.target)) {
+    navLinks.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
   }
 });
 
-// Contact Form Handling
-const contactForm = document.getElementById('contactForm');
+// --- Navbar scroll effect ---
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+}
+
+// --- Scroll-to-Top Button ---
+const scrollTopBtn = document.getElementById('scrollTop');
+
+if (scrollTopBtn) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// --- Contact Form Handling ---
+const contactForm  = document.getElementById('contactForm');
+const formSuccess  = document.getElementById('formSuccess');
+const sendAnotherBtn = document.getElementById('sendAnotherBtn');
+
 if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
+  contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // Basic validation
-    if (!name || !email || !subject || !message) {
-      alert('Please fill in all fields');
-      return;
+
+    let valid = true;
+
+    // Validate name
+    const nameInput = document.getElementById('name');
+    const nameError = document.getElementById('name-error');
+    if (nameInput && nameError) {
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('error');
+        nameError.classList.add('visible');
+        valid = false;
+      } else {
+        nameInput.classList.remove('error');
+        nameError.classList.remove('visible');
+      }
     }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert('Please enter a valid email');
-      return;
+
+    // Validate email
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    if (emailInput && emailError) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+        emailInput.classList.add('error');
+        emailError.classList.add('visible');
+        valid = false;
+      } else {
+        emailInput.classList.remove('error');
+        emailError.classList.remove('visible');
+      }
     }
-    
-    // Send email via FormSubmit service
-    const formData = new FormData(this);
-    
-    // For now, show success message
-    alert('Thank you for your message! I will get back to you within 24-48 hours.');
+
+    // Validate subject
+    const subjectInput = document.getElementById('subject');
+    const subjectError = document.getElementById('subject-error');
+    if (subjectInput && subjectError) {
+      if (!subjectInput.value.trim()) {
+        subjectInput.classList.add('error');
+        subjectError.classList.add('visible');
+        valid = false;
+      } else {
+        subjectInput.classList.remove('error');
+        subjectError.classList.remove('visible');
+      }
+    }
+
+    // Validate message
+    const messageInput = document.getElementById('message');
+    const messageError = document.getElementById('message-error');
+    if (messageInput && messageError) {
+      if (!messageInput.value.trim() || messageInput.value.trim().length < 20) {
+        messageInput.classList.add('error');
+        messageError.classList.add('visible');
+        valid = false;
+      } else {
+        messageInput.classList.remove('error');
+        messageError.classList.remove('visible');
+      }
+    }
+
+    if (!valid) return;
+
+    // Show success state
+    contactForm.style.display = 'none';
+    if (formSuccess) {
+      formSuccess.classList.add('visible');
+    }
     contactForm.reset();
   });
 }
 
-// Scroll to top button (optional feature)
-const scrollTopBtn = document.createElement('button');
-scrollTopBtn.innerHTML = '↑';
-scrollTopBtn.style.cssText = `
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, #10b981, #0ea5e9);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  display: none;
-  z-index: 999;
-  transition: all 0.3s ease;
-`;
+if (sendAnotherBtn && contactForm && formSuccess) {
+  sendAnotherBtn.addEventListener('click', () => {
+    formSuccess.classList.remove('visible');
+    contactForm.style.display = 'block';
+  });
+}
 
-document.body.appendChild(scrollTopBtn);
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    scrollTopBtn.style.display = 'flex';
-    scrollTopBtn.style.alignItems = 'center';
-    scrollTopBtn.style.justifyContent = 'center';
-  } else {
-    scrollTopBtn.style.display = 'none';
-  }
+// --- Clear field errors on input ---
+document.querySelectorAll('.form-group input, .form-group textarea').forEach(field => {
+  field.addEventListener('input', () => {
+    field.classList.remove('error');
+    const errorEl = document.getElementById(field.id + '-error');
+    if (errorEl) errorEl.classList.remove('visible');
+  });
 });
 
-scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+// --- Smooth scroll for anchor links ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 });
