@@ -1,434 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Richa Pitale - Digital Strategist & Creative</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'DM Sans', sans-serif; 
-      background: #f5f0e8; 
-      color: #0e0c0a; 
-      overflow-x: hidden;
-    }
-    nav { 
-      position: fixed; top: 0; width: 100%; 
-      padding: 1.4rem 3rem; 
-      background: rgba(245,240,232,0.95); 
-      z-index: 100;
-    }
-    .nav-logo { 
-      font-size: 1.6rem; 
-      font-weight: 700; 
-      color: #0e0c0a;
-    }
-    #hero { 
-      min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding-top: 70px;
-      text-align: center;
-    }
-    .hero-content { 
-      width: 100%; 
-      padding: 4rem 3rem;
-    }
-    .hero-name { 
-      font-size: 5rem; 
-      color: #0e0c0a; 
-      margin: 1rem 0;
-    }
-    .hero-name span { color: #e8390e; }
-    .hero-sub { 
-      font-style: italic; 
-      font-size: 1.6rem; 
-      color: #d4a017; 
-      margin: 1rem 0;
-    }
-    .hero-desc { 
-      font-size: 1rem; 
-      color: #5a5450; 
-      max-width: 600px; 
-      margin: 2rem auto;
-    }
-    .hero-cta { 
-      margin: 2rem 0; 
-    }
-    .btn { 
-      padding: 1rem 2rem; 
-      margin: 0 1rem; 
-      font-size: 0.8rem; 
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary { 
-      background: #e8390e; 
-      color: white;
-    }
-    .btn-ghost { 
-      background: transparent; 
-      border-bottom: 2px solid #0e0c0a; 
-      color: #0e0c0a;
-    }
-    .marquee { 
-      background: #e8390e; 
-      color: white; 
-      padding: 1rem; 
-      overflow: hidden; 
-      white-space: nowrap;
-    }
-    .marquee-text { 
-      display: inline-block; 
-      animation: scroll 20s linear infinite;
-    }
-    @keyframes scroll { 
-      0% { transform: translateX(100%); } 
-      100% { transform: translateX(-100%); }
-    }
-    #about { 
-      padding: 8rem 3rem; 
-      display: grid; 
-      grid-template-columns: 1fr 1.3fr; 
-      gap: 5rem; 
-      max-width: 1400px; 
-      margin: 0 auto;
-    }
-    .about-image { 
-      width: 100%; 
-      aspect-ratio: 3/4; 
-      background: linear-gradient(135deg, #e8390e15, #d4a01715); 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      font-size: 4rem;
-    }
-    .section-heading { 
-      font-size: 3.5rem; 
-      color: #0e0c0a; 
-      margin: 2rem 0;
-    }
-    #experience { 
-      background: #0e0c0a; 
-      color: #f5f0e8; 
-      padding: 8rem 3rem;
-    }
-    .timeline { 
-      border-left: 1px solid rgba(255,255,255,0.12);
-      padding-left: 3rem;
-      position: relative;
-    }
-    .timeline-item { 
-      margin: 2rem 0; 
-      position: relative;
-    }
-    .timeline-item::before { 
-      content: ''; 
-      width: 8px; 
-      height: 8px; 
-      background: #e8390e; 
-      border-radius: 50%; 
-      position: absolute; 
-      left: -3.8rem; 
-      top: 1rem;
-    }
-    .timeline-period { 
-      font-size: 0.72rem; 
-      color: #c9bfaf; 
-      text-transform: uppercase;
-    }
-    .timeline-role { 
-      font-size: 1.8rem; 
-      color: #f5f0e8; 
-      margin: 0.5rem 0;
-    }
-    .timeline-desc { 
-      font-size: 0.92rem; 
-      color: #c9bfaf; 
-      line-height: 1.75;
-    }
-    #projects { 
-      padding: 8rem 3rem; 
-      background: #ede8df;
-    }
-    .projects-grid { 
-      display: grid; 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 1.5px; 
-      margin-top: 4rem; 
-      background: #c9bfaf;
-    }
-    .project-card { 
-      background: #f5f0e8; 
-      padding: 2.5rem; 
-      min-height: 300px; 
-      display: flex; 
-      flex-direction: column; 
-      transition: all 0.3s;
-    }
-    .project-card:hover { 
-      background: #0e0c0a; 
-      color: white; 
-      transform: translateY(-6px);
-    }
-    .project-card:hover .project-title { 
-      color: white;
-    }
-    .project-num { 
-      font-size: 4rem; 
-      color: rgba(0,0,0,0.06); 
-      margin-bottom: 0.5rem;
-    }
-    .project-category { 
-      font-size: 0.68rem; 
-      color: #e8390e; 
-      text-transform: uppercase; 
-      margin-bottom: 0.8rem;
-    }
-    .project-title { 
-      font-size: 1.6rem; 
-      color: #0e0c0a; 
-      margin-bottom: 0.8rem; 
-      flex-grow: 1;
-    }
-    .project-desc { 
-      font-size: 0.85rem; 
-      color: #5a5450;
-    }
-    #contact { 
-      background: #0e0c0a; 
-      padding: 8rem 3rem; 
-      text-align: center;
-    }
-    .contact-heading { 
-      font-size: 4rem; 
-      color: #f5f0e8; 
-      margin: 2rem 0;
-    }
-    .contact-heading span { 
-      color: #d4a017;
-    }
-    .contact-sub { 
-      font-style: italic; 
-      font-size: 1.2rem; 
-      color: #c9bfaf; 
-      margin: 2rem 0;
-    }
-    .contact-links { 
-      display: flex; 
-      justify-content: center; 
-      gap: 2rem; 
-      flex-wrap: wrap; 
-      margin: 2rem 0;
-    }
-    .contact-link { 
-      font-size: 0.8rem; 
-      color: #f5f0e8; 
-      padding: 1rem 2.5rem; 
-      border: 1.5px solid rgba(255,255,255,0.2); 
-      text-decoration: none; 
-      transition: all 0.25s;
-    }
-    .contact-link:hover { 
-      background: #e8390e; 
-      border-color: #e8390e; 
-      color: #f5f0e8;
-    }
-    footer { 
-      background: #080706; 
-      padding: 2rem 3rem; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center;
-    }
-    .footer-copy { 
-      font-size: 0.72rem; 
-      color: rgba(255,255,255,0.3); 
-      text-transform: uppercase;
-    }
-    @media (max-width: 1024px) {
-      #about { grid-template-columns: 1fr; }
-      .about-image { display: none; }
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .projects-grid { grid-template-columns: 1fr; }
-      .hero-name { font-size: 3rem; }
-      .btn { margin: 0.5rem; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Richa Pitale | Digital Marketing Manager &amp; Creative Strategist</title>
+  <meta name="description" content="Digital marketing strategist specializing in campaign strategy, graphic design, and creative brand development. Based in Liverpool, UK." />
+  <meta name="keywords" content="Digital Marketing Manager, Graphic Designer, Campaign Strategy, Event Marketing, Liverpool, Creative Strategist, Social Media Strategy, Brand Management" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Richa Pitale | Digital Marketing Manager &amp; Creative Strategist" />
+  <meta property="og:description" content="Digital marketing strategist specializing in campaign strategy, graphic design, and creative brand development. Based in Liverpool, UK." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://richapitale-sys.github.io/portfolio/" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Richa Pitale | Digital Marketing Manager &amp; Creative Strategist" />
+  <meta name="twitter:description" content="Digital marketing strategist specializing in campaign strategy, graphic design, and creative brand development." />
+  <link rel="canonical" href="https://richapitale-sys.github.io/portfolio/" />
+  <!-- Fonts preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Richa Pitale",
+    "jobTitle": "Digital Marketing Manager & Creative Strategist",
+    "description": "Digital marketing strategist specializing in campaign strategy, graphic design, and creative brand development. Based in Liverpool, UK.",
+    "url": "https://richapitale-sys.github.io/portfolio/",
+    "email": "richa_pitale@yahoo.com",
+    "telephone": "+44 7934965411",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Liverpool",
+      "addressCountry": "GB"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/richa-pitale-b18203397",
+      "https://www.instagram.com/ri_gone_rogue",
+      "https://www.imdb.com/name/nm17550580/"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <nav>
-    <a href="#hero" class="nav-logo">RICHA PITALE</a>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Richa <span>Pitale</span></a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
-  <section id="hero">
-    <div class="hero-content">
-      <p style="color: #e8390e; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.25em;">Digital Strategist & Creative</p>
-      <h1 class="hero-name">RICHA<br><span>PITALE</span></h1>
-      <p class="hero-sub">Strategy • Design • Storytelling</p>
-      <p class="hero-desc">MSc Digital Marketing & Analytics candidate at University of Liverpool. 8+ years building brands that don't blend in. Creator, strategist, dancer, actress.</p>
-      <div class="hero-cta">
-        <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Work</button>
-        <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Let's Connect</button>
-      </div>
-    </div>
-  </section>
+  <main>
 
-  <div class="marquee">
-    <div class="marquee-text">
-      Digital Marketing Strategy ✦ Content Creation ✦ SEO & Analytics ✦ Social Media Management ✦ Brand Strategy ✦ Graphic Design ✦ Event Marketing ✦ Storytelling ✦ Digital Marketing Strategy ✦ Content Creation ✦
-    </div>
-  </div>
-
-  <section id="about">
-    <div class="about-image">👩</div>
-    <div>
-      <p style="color: #e8390e; text-transform: uppercase; font-size: 0.72rem;">About Me</p>
-      <h2 class="section-heading">Creative Strategy<br><span style="font-style: italic; color: #d4a017;">Meets Data</span></h2>
-      <p style="font-size: 1rem; color: #4a4540; margin: 1.5rem 0;">I'm Richa — digital marketing strategist, content creator, actress, and MSc Digital Marketing & Analytics candidate. My work lives at the intersection of data, storytelling, and authentic human connection.</p>
-      <p style="font-size: 1rem; color: #4a4540; margin: 1.5rem 0;">With a background spanning F&B brands, fashion week coverage, event marketing, and personal branding, I bring a rare blend of creative instinct and analytical rigor to every project.</p>
-      <p style="font-size: 1rem; color: #4a4540; margin: 1.5rem 0;">When I'm not building brand strategies, I'm a trained Kathak classical dancer of 15+ years, or sharing creative energy on <strong>@ri.gone.rogue</strong>.</p>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div style="max-width: 1300px; margin: 0 auto;">
-      <p style="color: #e8390e; text-transform: uppercase; font-size: 0.72rem;">Work Experience</p>
-      <h2 style="font-size: 3.5rem; color: #f5f0e8; margin: 2rem 0;">Where I've<br><span style="font-style: italic; color: #d4a017;">Made Moves</span></h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <p class="timeline-period">2024 – Present</p>
-          <p style="color: #d4a017; font-style: italic; margin-top: 0.4rem;">University of Liverpool</p>
-          <h3 class="timeline-role">MSc Digital Marketing & Analytics</h3>
-          <p class="timeline-desc">Pursuing a postgraduate degree specialising in data-driven marketing strategy, consumer behaviour, SEO, and digital analytics.</p>
-        </div>
-        <div class="timeline-item">
-          <p class="timeline-period">2022 – 2024</p>
-          <p style="color: #d4a017; font-style: italic; margin-top: 0.4rem;">Multi-Brand Digital Strategy</p>
-          <h3 class="timeline-role">Content & Brand Strategist</h3>
-          <p class="timeline-desc">Developed comprehensive digital marketing strategies for F&B brands and textile startups.</p>
-        </div>
-        <div class="timeline-item">
-          <p class="timeline-period">2021 – 2022</p>
-          <p style="color: #d4a017; font-style: italic; margin-top: 0.4rem;">Times Fashion Week</p>
-          <h3 class="timeline-role">Media & Content Creator</h3>
-          <p class="timeline-desc">Covered India's premier fashion event, creating live coverage and celebrity interviews.</p>
-        </div>
-        <div class="timeline-item">
-          <p class="timeline-period">2019 – 2021</p>
-          <p style="color: #d4a017; font-style: italic; margin-top: 0.4rem;">Acting & Personal Branding</p>
-          <h3 class="timeline-role">Actress & Digital Creator</h3>
-          <p class="timeline-desc">Featured actress in web series Koshimbir. Built personal content brand creating multilingual content.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="hero" aria-labelledby="hero-name">
+      <div class="hero-content">
+        <div class="hero-badge">Organized Chaos: Strategy, Design &amp; Storytelling</div>
+        <h1 id="hero-name" class="hero-title">Richa Pitale</h1>
+        <p class="hero-subtitle">Digital Marketing Manager | Creative Strategist | Designer</p>
+        <p class="hero-description">
+          I create impactful marketing campaigns that blend strategy, design, and storytelling.
+          With a background in media, advertising, and performing arts, I bring creative problem-solving
+          to every brand challenge.
+        </p>
+        <div class="hero-ctas">
+          <a href="projects.html" class="btn btn-primary">View My Work &#8594;</a>
+          <a href="contact.html" class="btn btn-outline">Get In Touch</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="projects">
-    <div style="max-width: 1300px; margin: 0 auto;">
-      <p style="color: #e8390e; text-transform: uppercase; font-size: 0.72rem;">Projects & Case Studies</p>
-      <h2 class="section-heading">The Work<br>That <span style="color: #d4a017;">Speaks</span></h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-num">01</div>
-          <p class="project-category">SEO Strategy</p>
-          <h3 class="project-title">Liverpool ONE Campaign</h3>
-          <p class="project-desc">Market segmentation strategy & visual campaign. Academic competition winner.</p>
-        </div>
-        <div class="project-card">
-          <div class="project-num">02</div>
-          <p class="project-category">Business Development</p>
-          <h3 class="project-title">Liverpool Fed Sponsorship</h3>
-          <p class="project-desc">Strategic sponsorship proposal with business case, ROI metrics, and activation strategy.</p>
-        </div>
-        <div class="project-card">
-          <div class="project-num">03</div>
-          <p class="project-category">Event Marketing</p>
-          <h3 class="project-title">Bombay Times Fashion Week</h3>
-          <p class="project-desc">Live content creation, celebrity interviews, real-time social strategy for India's fashion event.</p>
-        </div>
-        <div class="project-card">
-          <div class="project-num">04</div>
-          <p class="project-category">Brand Strategy</p>
-          <h3 class="project-title">Multi-Brand Hospitality</h3>
-          <p class="project-desc">Digital marketing strategy for three F&B brands: Urban Juice, Big Little Bombaye, Casa De Reva.</p>
-        </div>
-        <div class="project-card">
-          <div class="project-num">05</div>
-          <p class="project-category">Acting & Media</p>
-          <h3 class="project-title">Koshimbir Web Series</h3>
-          <p class="project-desc">Featured actress role bringing authentic storytelling to screen. <a href="https://www.imdb.com/name/nm17550580/" target="_blank" style="color: #d4a017; text-decoration: underline;">IMDB</a></p>
-        </div>
-        <div class="project-card">
-          <div class="project-num">06</div>
-          <p class="project-category">Achievement</p>
-          <h3 class="project-title">Shravan Sundari Pageant</h3>
-          <p class="project-desc">Winner of prestigious pageant showcasing poise, cultural pride, and creative expression on stage.</p>
-        </div>
+    <!-- Ticker / Marquee -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-inner">
+        Digital Marketing Strategy ✦ Content Creation ✦ SEO &amp; Analytics ✦ Social Media Management ✦ Brand Strategy ✦ Graphic Design ✦ Event Marketing ✦ Campaign Rollout ✦ Storytelling ✦ Multi-Brand Management ✦
+        Digital Marketing Strategy ✦ Content Creation ✦ SEO &amp; Analytics ✦ Social Media Management ✦ Brand Strategy ✦ Graphic Design ✦ Event Marketing ✦ Campaign Rollout ✦ Storytelling ✦ Multi-Brand Management ✦
       </div>
     </div>
-  </section>
 
-  <section id="contact">
-    <div style="max-width: 1300px; margin: 0 auto;">
-      <p style="color: #e8390e; text-transform: uppercase; font-size: 0.72rem;">Let's Connect</p>
-      <h2 class="contact-heading">Ready to<br>Collaborate<span>?</span></h2>
-      <p class="contact-sub">Open to digital marketing roles, content strategy, brand partnerships, and creative projects.</p>
-      <div class="contact-links">
-        <a href="https://www.linkedin.com/in/richa-pitale-b18203397" target="_blank" class="contact-link">LinkedIn</a>
-        <a href="https://www.instagram.com/ri.gone.rogue/" target="_blank" class="contact-link">Instagram</a>
-        <a href="mailto:richa_pitale@yahoo.com" class="contact-link">Email</a>
+    <!-- Stats Section -->
+    <section class="stats-section" aria-label="Career highlights">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>8+</h3>
+            <p class="stat-label">Years Experience</p>
+          </div>
+          <div class="stat-card">
+            <h3>3</h3>
+            <p class="stat-label">Brands Managed</p>
+          </div>
+          <div class="stat-card">
+            <h3>4</h3>
+            <p class="stat-label">Case Studies</p>
+          </div>
+          <div class="stat-card">
+            <h3>4</h3>
+            <p class="stat-label">Languages</p>
+          </div>
+        </div>
       </div>
-      <p style="color: #c9bfaf; margin-top: 2rem;">Or reach me directly: <a href="mailto:richa_pitale@yahoo.com" style="color: #d4a017;">richa_pitale@yahoo.com</a></p>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p class="footer-copy">© 2026 Richa Pitale. All rights reserved.</p>
-    <p style="font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.15); text-transform: uppercase;">RP</p>
+    <!-- About Preview -->
+    <section class="section-padding home-about-section" aria-labelledby="about-preview-heading">
+      <div class="container">
+        <div class="about-intro">
+          <div class="about-text">
+            <h2 id="about-preview-heading">Creative Strategy<br><span class="gradient-text">Meets Impact</span></h2>
+            <p>
+              I'm a creative and solution-oriented digital marketing strategist with 8+ years of experience
+              across media, design, and brand marketing. My background spans graphic design and advertising
+              to high-profile event marketing and regional campaign strategy.
+            </p>
+            <p>
+              Currently pursuing <strong>MSc Digital Marketing &amp; Analytics</strong> at the University of
+              Liverpool (Expected 2026). When I'm not building brand strategies, I'm a trained Kathak classical
+              dancer and content creator at <strong>@ri_gone_rogue</strong>.
+            </p>
+            <div class="about-highlight" role="note">
+              <p>Work Authorization: <strong>UK Student Visa</strong> with eligibility for <strong>2-Year Graduate Route Visa</strong>.</p>
+            </div>
+            <div style="margin-top: 1.75rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="about.html" class="btn btn-primary">Learn More About Me &#8594;</a>
+              <a href="about.html#cv" class="btn btn-outline">Download CV</a>
+            </div>
+          </div>
+
+          <div class="about-info-grid" role="list">
+            <div class="info-card" role="listitem">
+              <div class="info-icon" aria-hidden="true">📍</div>
+              <div>
+                <h4>Location</h4>
+                <p>Liverpool, UK (Willing to relocate)</p>
+              </div>
+            </div>
+            <div class="info-card" role="listitem">
+              <div class="info-icon" aria-hidden="true">🎓</div>
+              <div>
+                <h4>Education</h4>
+                <p>MSc Digital Marketing &amp; Analytics<br>University of Liverpool (2025–2026)</p>
+              </div>
+            </div>
+            <div class="info-card" role="listitem">
+              <div class="info-icon" aria-hidden="true">💼</div>
+              <div>
+                <h4>Specialisation</h4>
+                <p>Campaign Strategy · Graphic Design · Social Media · Brand Management</p>
+              </div>
+            </div>
+            <div class="info-card" role="listitem">
+              <div class="info-icon" aria-hidden="true">🎭</div>
+              <div>
+                <h4>Beyond Work</h4>
+                <p>Kathak Dancer · Actress (<a href="https://www.imdb.com/name/nm17550580/" target="_blank" rel="noopener noreferrer">IMDB</a>) · Pageant Winner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Featured Projects -->
+    <section class="section-padding home-projects-section" aria-labelledby="projects-preview-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="projects-preview-heading">Featured <span class="gradient-text">Projects</span></h2>
+          <p>Case studies across academic competitions and professional campaigns</p>
+        </div>
+        <div class="home-featured-grid">
+          <div class="home-project-card">
+            <div class="home-project-num">01</div>
+            <div class="home-project-category">Academic · Competition Winner 🏆</div>
+            <div class="home-project-title">Liverpool ONE: Market Segmentation Campaign</div>
+            <p class="home-project-desc">Visual campaign explaining market segmentation for Liverpool ONE retail district. Won poster design competition.</p>
+          </div>
+          <div class="home-project-card">
+            <div class="home-project-num">02</div>
+            <div class="home-project-category">Business Development</div>
+            <div class="home-project-title">Liverpool Fed Women's Football: Sponsorship Proposal</div>
+            <p class="home-project-desc">Comprehensive sponsorship deck with business benefits, activation opportunities, and ROI metrics.</p>
+          </div>
+          <div class="home-project-card">
+            <div class="home-project-num">03</div>
+            <div class="home-project-category">Professional · Event Marketing</div>
+            <div class="home-project-title">Bombay Times Fashion Week: Digital Strategy</div>
+            <p class="home-project-desc">Live content creation, celebrity interviews (Mannara Chopra, Sonali Kulkarni), real-time social strategy.</p>
+          </div>
+          <div class="home-project-card">
+            <div class="home-project-num">04</div>
+            <div class="home-project-category">Professional · 5 Years</div>
+            <div class="home-project-title">Multi-Brand Hospitality: Urban Juice, Big Little Bombaye, Casa De Reva</div>
+            <p class="home-project-desc">Digital marketing strategy across three distinct F&amp;B brands over a 5-year partnership.</p>
+          </div>
+        </div>
+        <div class="btn-row" style="margin-top: 2.5rem;">
+          <a href="projects.html" class="btn btn-primary">View All Projects &#8594;</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CTA / Contact Teaser -->
+    <section class="section-padding" style="background: var(--bg-secondary);" aria-labelledby="cta-home-heading">
+      <div class="container">
+        <div class="cta-banner">
+          <h2 id="cta-home-heading">Let's Work Together</h2>
+          <p>Let's work together on your next project. Reach out via email, phone, or social media.</p>
+          <div class="btn-row">
+            <a href="contact.html" class="btn btn-primary">Get In Touch &#8594;</a>
+            <a href="about.html" class="btn btn-outline">Learn More About Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Richa Pitale</h3>
+          <p>Digital Marketing Manager &amp; Creative Strategist based in Liverpool, UK. Specializing in campaign strategy, graphic design, and creative brand development.</p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/richa-pitale-b18203397" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+            <a href="https://www.instagram.com/ri_gone_rogue" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+            <a href="https://www.imdb.com/name/nm17550580/" target="_blank" rel="noopener noreferrer" aria-label="IMDB">🎬</a>
+            <a href="mailto:richa_pitale@yahoo.com" aria-label="Email">✉️</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/richa-pitale-b18203397" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/ri_gone_rogue" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://www.imdb.com/name/nm17550580/" target="_blank" rel="noopener noreferrer">IMDB</a></li>
+            <li><a href="mailto:richa_pitale@yahoo.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Richa Pitale. All rights reserved.</p>
+        <p>Built with passion &amp; creative energy ✨</p>
+      </div>
+    </div>
   </footer>
 
-  <script>
-    // Cursor animation
-    const cursor = document.createElement('div');
-    cursor.style.width = '12px';
-    cursor.style.height = '12px';
-    cursor.style.background = '#e8390e';
-    cursor.style.borderRadius = '50%';
-    cursor.style.position = 'fixed';
-    cursor.style.pointerEvents = 'none';
-    cursor.style.zIndex = '9999';
-    cursor.style.mixBlendMode = 'multiply';
-    document.body.appendChild(cursor);
-    
-    const ring = document.createElement('div');
-    ring.style.width = '36px';
-    ring.style.height = '36px';
-    ring.style.border = '1.5px solid #e8390e';
-    ring.style.borderRadius = '50%';
-    ring.style.position = 'fixed';
-    ring.style.pointerEvents = 'none';
-    ring.style.zIndex = '9998';
-    ring.style.mixBlendMode = 'multiply';
-    document.body.appendChild(ring);
-    
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
-      mx = e.clientX;
-      my = e.clientY;
-      cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
-    });
-    
-    function animateRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
